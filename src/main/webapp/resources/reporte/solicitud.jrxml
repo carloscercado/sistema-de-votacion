@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="residencia" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="06e0681a-25ab-45e1-a5df-23135ac24a66">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="255"/>
+	<parameter name="persona" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="cedula" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select concat(nombre,' ',segundon,' ',apellido,' ', segundoa) from ciudadano where cedula=$P{cedula}]]>
+	</queryString>
+	<field name="concat" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="560" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="edb4517c-7593-437b-9dde-4bc8079f50d8" x="34" y="83" width="496" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SOLICITUD DE VIVIENDA]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="09f4ad0c-e650-4c53-9da3-a5a205a0f07e" x="34" y="159" width="496" height="206"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Arial" size="14"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA["     Los directivos del Consejo Comunal abajo identificado, hacen constar por medio "+
+"de la presente, que el(la) ciudadano "+$P{persona}
++", venezolano, mayor de edad, portador de la Cédula de identidad N°: "+$P{cedula}+", vive en calidad de arrendamiento"
++" junto a su família en nuestra comunidad, por tanto, requiere de una solución habitacional por carecer de ella."]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement uuid="6764acb7-607b-463e-9163-52e8988301d8" x="34" y="365" width="496" height="70"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Arial" size="14"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA["      Constancia que se expide a solicitud de la parte interesada, al día "
++new java.util.Date().getDate()+" del mes "+new java.util.Date().getMonth()+" del "
++"año "+(new java.util.Date().getYear()+1900)+"."]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement uuid="68549836-0cdd-4b5b-8af7-d44a7c4bfbc0" x="44" y="501" width="496" height="29"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="14"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["_________________________"]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd">
+				<reportElement uuid="10dafbf2-ac52-48f7-b7d3-dc3804edf783" x="44" y="523" width="496" height="29"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Arial" size="14"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Sello del Consejo Comunal"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

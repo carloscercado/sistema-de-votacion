@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-feb-2017 20:31:47 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="com.uptos.votacion.model.Plancha" optimistic-lock="version" schema="public" table="plancha">
+    <id name="id" type="int">
+      <column name="id"/>
+      <generator class="increment"/>
+    </id>
+    <property name="nombre" type="string">
+      <column length="40" name="nombre" not-null="true" unique="true"/>
+    </property>
+    <property name="votos" type="java.lang.Integer">
+      <column name="votos"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="procesos" table="proceso">
+      <key>
+        <column name="plancha" not-null="true"/>
+      </key>
+      <one-to-many class="com.uptos.votacion.model.Proceso"/>
+    </set>
+  </class>
+</hibernate-mapping>
